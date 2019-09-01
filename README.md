@@ -4,16 +4,15 @@
 - To design a personalization based event recommendation systems for event search.
 
 ## General Instruction
-- Design a web service with `RESTful APIs` in Java to handle HTTP requests and responses
-- Frontend: an interactive web page with `AJAX` technology implemented with `HTML`, `CSS` and `JavaScript`. The Event Recommendation Website realizes three main functions:
+- Designed and implemented an interactive website like Eventbrite that allows clients to perform customized search for local events, favorite events and view recommended events (`HTML`, `CSS`, `JavaScript`, `AJAX`).The Event Recommendation Website realizes three main functions:
    * **Search** events around users
    * **Favorite** events they like and also delete events they don’t like anymore
    * Get **recommendation of events** around based on their favorite history and distance to where events will be hold
-- Backend: use `Java` to process logic request, and some supports are as below:
-   * Built with both relational database and NoSQL database (`MySQL` and `MongoDB`) to support data storage from users and items searched in TicketMaster API
-   * Design **content-based recommendation algorithm** for event recommendation
-- Deploy website server on `Amazon EC2`: [Event Recommendation System](http://52.24.237.51/EventRecommend/)
-- Analyze website traffic both online and offline with ELK (`ElasticSearch`, `Logstash` and `Kibana`) and `MapReduce` in MongoDB
+- Built `Java Servlets` (Tomcat Server) with `RESTful` API’s to handle HTTP requests. 
+- Utilized `MySQL` to store event information fetched from TicketMaster API.
+- Evaluated multiple recommendation algorithms (User-based, Item-based, Demographic-based, etc.) and designed a **content-based recommendation algorithm** based on event content and users’ click history and favorite items.
+- Optimized the precision of recommendation by presenting recommended items with rankings, based on various criteria including distance, ratings, and categories.
+- Deployed the project to **Amazon Web Services (EC2)** to improve scalability and tested with JUnit testing.
 
 ## Infrastructure Design
 - 3-tier architecture
@@ -100,9 +99,3 @@
 
 ![ELK analysis](https://raw.githubusercontent.com/Wangxh329/EventRecommendation/master/img_font_icon_sources/doc/elk.png)
 > Remote development environment
-
-- Offline (**MapReduce in MongoDB**)
-   * Copy-paste some logs from Tomcat server
-   * Purify log data and store in MongoDB
-   * Do ``mapreduce()`` in MongoDB
-   * Get a list of timebucket-count in descending order of count, then find the peak time of website traffic
